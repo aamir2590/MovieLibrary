@@ -4,6 +4,10 @@ buildscript {
     ext.kotlin_version = '1.1.4'
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -17,9 +21,19 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    supportLibVersion = '25.4.0'
+    constrainLayoutLibVersion = '1.0.2'
+    daggerLibVersion = '2.13'
 }
