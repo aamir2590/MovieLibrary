@@ -21,11 +21,7 @@ class MainThreadImpl : MainThread {
 
     }
 
-    constructor() {
-        mHandler = Handler(Looper.getMainLooper())
-    }
-
-    private val mHandler: Handler;
+    private val mHandler: Handler = Handler(Looper.getMainLooper());
 
     /**
      * This method post the runnable to be execute on MainThread(UI) using {@Link #Handler}
