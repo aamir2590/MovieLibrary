@@ -1,11 +1,13 @@
 package com.android.movielibrary.genre
 
+import javax.inject.Inject
+
 /*
  * Created by aamir on 30/03/18.
  */
-class GenrePresenter : GenreContract.Presenter {
+class GenrePresenter @Inject constructor(val genreView: GenreContract.View) : GenreContract.Presenter {
 
-    override fun setView(view: GenreActivity) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    init {
+        genreView.setPresenter(this)
     }
 }

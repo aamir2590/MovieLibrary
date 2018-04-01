@@ -8,5 +8,5 @@ import com.android.movielibrary.base.ui.BaseView
  */
 class GenreContract {
     interface Presenter : BasePresenter<GenreActivity>
-    interface View : BaseView
+    interface View : BaseView<Presenter>
 }
