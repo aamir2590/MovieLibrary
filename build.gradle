@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.1.4'
+    ext.kotlin_version = '1.2.21'
     repositories {
         jcenter()
         maven {
@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -36,4 +36,9 @@ ext {
     supportLibVersion = '25.4.0'
     constrainLayoutLibVersion = '1.0.2'
     daggerLibVersion = '2.13'
+    retrofitLibVersion = '2.4.0'
+    rxandroidLibVersion = '2.0.1'
+    retroGsonLibVersion = '2.3.0'
+    rxJava2LibVersion = '2.0.2'
+    retroFitRxjavaAdapterLibVersion = '1.0.0'
 }

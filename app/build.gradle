@@ -23,20 +23,31 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
-    compile "com.android.support.constraint:constraint-layout:$rootProject.constrainLayoutLibVersion"
-    compile "com.google.dagger:dagger:$rootProject.daggerLibVersion"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:support-v4:25.4.0'
-    testCompile 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constrainLayoutLibVersion"
+    implementation 'com.android.support:support-v4:25.4.0'
+
+
+
+    androidTestCompile 'junit:junit:4.12'
     androidTestCompile("com.android.support.test.espresso:espresso-core:2.2.2", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile "com.google.dagger:dagger-android:$rootProject.daggerLibVersion"
-    compile "com.google.dagger:dagger-android-support:$rootProject.daggerLibVersion"
+    implementation "com.google.dagger:dagger:$rootProject.daggerLibVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerLibVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerLibVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitLibVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retroGsonLibVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rootProject.retroFitRxjavaAdapterLibVersion"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidLibVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJava2LibVersion"
 
     kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerLibVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerLibVersion"
