@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.android.movielibrary.genre.GenreActivity">
+    tools:context="com.android.movielibrary.genre.ui.GenreActivity">
 
 </android.support.constraint.ConstraintLayout>
