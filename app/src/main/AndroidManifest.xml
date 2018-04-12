@@ -13,7 +13,7 @@
         <activity android:name=".MainActivity">
         </activity>
 
-        <activity android:name=".genre.GenreActivity" >
+        <activity android:name=".genre.ui.GenreActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
