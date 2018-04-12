@@ -1,8 +1,8 @@
 package com.android.movielibrary.base.di
 
-import android.app.Application
 import com.android.movielibrary.MovieLibraryApp
-import dagger.BindsInstance
+import com.android.movielibrary.base.interactors.Executor
+import com.android.movielibrary.base.interactors.MainThread
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
@@ -16,6 +16,10 @@ import javax.inject.Singleton
         ActivityBuilder::class))
 interface ApplicationComponent {
 
-    fun inject(app: MovieLibraryApp);
+    fun inject(app: MovieLibraryApp)
+
+    fun getHandler(): MainThread
+
+    fun getThreadPoolExecutor(): Executor
 
 }

@@ -3,18 +3,14 @@ package com.android.movielibrary.base.interactors
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by aamir on 12/02/18.
  */
-class ThreadExecutor : Executor {
-
-    companion object {
-        private val sThereadExecutor: ThreadExecutor? = null
-        fun getInstance(): ThreadExecutor {
-            return ThreadExecutor()
-        }
-    }
+@Singleton
+class ThreadExecutor @Inject constructor() : Executor {
 
     private val mThreadPoolExecutor: ThreadPoolExecutor
     private val CORE_POOL_SIZE = Runtime.getRuntime().availableProcessors();

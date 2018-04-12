@@ -1,7 +1,8 @@
 package com.android.movielibrary.base.di
 
-import com.android.movielibrary.genre.GenreActivity
-import com.android.movielibrary.genre.GenreActivityModule
+import com.android.movielibrary.base.di.customscope.ActivityScope
+import com.android.movielibrary.genre.ui.GenreActivity
+import com.android.movielibrary.genre.di.GenreActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -16,6 +17,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilder {
 
+    @ActivityScope
     @ContributesAndroidInjector(modules = arrayOf(GenreActivityModule::class))
     abstract fun bindGenreActivity(): GenreActivity
 

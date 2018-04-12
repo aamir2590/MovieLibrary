@@ -11,13 +11,7 @@ package com.android.movielibrary.base.interactors
  * @param threadExecutor singleton instance of Executor.
  * @param mainThread singleton instance of MainThread.
  * */
-abstract class AbstractInteractor(threadExecutor: Executor,
-                                  mainThread: MainThread) : Interactor {
-
-    private val mThreadExecutor = threadExecutor
-    private val mMainThreadExecutor = mainThread
-
-
+abstract class AbstractInteractor(private val threadExecutor: Executor) : Interactor {
     /*
     * Every Child interactor must implement their business logic in run(). And a Class must not
     * directly call this method instead it should call execute().
@@ -25,6 +19,6 @@ abstract class AbstractInteractor(threadExecutor: Executor,
     abstract fun run();
 
     override fun execute() {
-        mThreadExecutor.execute(this)
+        threadExecutor.execute(this)
     }
 }
