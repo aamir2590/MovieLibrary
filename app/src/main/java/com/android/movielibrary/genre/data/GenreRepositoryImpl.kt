@@ -3,6 +3,7 @@ package com.android.movielibrary.genre.data
 import com.android.movielibrary.base.di.customscope.ActivityScope
 import com.android.movielibrary.genre.data.remote.GenreDataSource
 import com.android.movielibrary.genre.domain.GenreRepository
+import io.reactivex.Single
 import javax.inject.Inject
 
 /*
@@ -11,6 +12,6 @@ import javax.inject.Inject
 @ActivityScope
 class GenreRepositoryImpl @Inject constructor(val genreDataSource: GenreDataSource) :
         GenreRepository {
-    override fun getGenres(): List<Genre> = genreDataSource.getGenreList();
+    override fun getGenres(): Single<List<Genre>> = genreDataSource.getGenreList();
 
 }
