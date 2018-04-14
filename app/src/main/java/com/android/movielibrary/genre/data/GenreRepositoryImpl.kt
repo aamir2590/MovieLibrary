@@ -12,6 +12,6 @@ import javax.inject.Inject
 @ActivityScope
 class GenreRepositoryImpl @Inject constructor(val genreDataSource: GenreDataSource) :
         GenreRepository {
-    override fun getGenres(): Single<List<Genre>> = genreDataSource.getGenreList();
+    override fun getGenres(): Single<GenresList> = genreDataSource.getGenreList()
 
 }
