@@ -10,7 +10,7 @@ import retrofit2.http.Query
  */
 
 //Only contain Network API for getting Genre from www.themoviedb.org
-interface GenreAPI {
+interface GenreService {
     @GET("/genre/movie/list")
     fun getGenre(@Query("key") key: String,
                  @Query("language") language: String): Single<List<Genre>>

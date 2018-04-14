@@ -4,7 +4,7 @@ import com.android.movielibrary.BASE_URL
 import com.android.movielibrary.base.di.customscope.ActivityScope
 import com.android.movielibrary.base.interactors.AbstractInteractor
 import com.android.movielibrary.genre.data.GenreRepositoryImpl
-import com.android.movielibrary.genre.data.remote.GenreAPI
+import com.android.movielibrary.genre.data.remote.GenreService
 import com.android.movielibrary.genre.data.remote.GenreDataSource
 import com.android.movielibrary.genre.data.remote.GenreNetworkDataSource
 import com.android.movielibrary.genre.domain.GenreRepository
@@ -44,16 +44,16 @@ class GenreActivityModule {
 
     @Provides
     @ActivityScope
-    fun provideGenreNetworkDataSource(genreAPI: GenreAPI): GenreDataSource = GenreNetworkDataSource(genreAPI)
+    fun provideGenreNetworkDataSource(genreService: GenreService): GenreDataSource = GenreNetworkDataSource(genreService)
 
     @Provides
-    fun provideGenreService(): GenreAPI {
+    fun provideGenreService(): GenreService {
 
         return Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
-                .build().create(GenreAPI::class.java)
+                .build().create(GenreService::class.java)
 
     }
 
