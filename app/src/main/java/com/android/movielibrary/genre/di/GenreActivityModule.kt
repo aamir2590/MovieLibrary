@@ -4,6 +4,7 @@ import com.android.movielibrary.BASE_URL
 import com.android.movielibrary.base.di.customscope.ActivityScope
 import com.android.movielibrary.base.interactors.AbstractInteractor
 import com.android.movielibrary.genre.data.GenreRepositoryImpl
+import com.android.movielibrary.genre.data.GenresList
 import com.android.movielibrary.genre.data.remote.GenreService
 import com.android.movielibrary.genre.data.remote.GenreDataSource
 import com.android.movielibrary.genre.data.remote.GenreNetworkDataSource
@@ -36,7 +37,7 @@ class GenreActivityModule {
 
     @Provides
     @ActivityScope
-    fun provideGetGenreInteractor(getMovieGenres: GetMovieGenres): AbstractInteractor = getMovieGenres
+    fun provideGetGenreInteractor(getMovieGenres: GetMovieGenres): AbstractInteractor<GenresList> = getMovieGenres
 
     @Provides
     @ActivityScope

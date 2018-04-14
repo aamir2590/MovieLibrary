@@ -1,10 +1,10 @@
 package com.android.movielibrary.base.di
 
 import com.android.movielibrary.MovieLibraryApp
-import com.android.movielibrary.base.interactors.Executor
-import com.android.movielibrary.base.interactors.MainThread
+import com.android.movielibrary.base.interactors.MainThreadScheduler
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import java.util.concurrent.Executor
 import javax.inject.Singleton
 
 /*
@@ -18,7 +18,7 @@ interface ApplicationComponent {
 
     fun inject(app: MovieLibraryApp)
 
-    fun getHandler(): MainThread
+    fun getMainThreadScheduler(): MainThreadScheduler
 
     fun getThreadPoolExecutor(): Executor
 

@@ -1,11 +1,11 @@
 package com.android.movielibrary.base.di
 
-import com.android.movielibrary.base.interactors.Executor
-import com.android.movielibrary.base.interactors.MainThread
-import com.android.movielibrary.base.interactors.MainThreadImpl
+import com.android.movielibrary.base.interactors.MainThreadScheduler
+import com.android.movielibrary.base.interactors.MainThreadSchedulerImpl
 import com.android.movielibrary.base.interactors.ThreadExecutor
 import dagger.Module
 import dagger.Provides
+import java.util.concurrent.Executor
 import javax.inject.Singleton
 
 /*
@@ -16,7 +16,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideHandler(): MainThread = MainThreadImpl()
+    fun provideHandler(): MainThreadScheduler = MainThreadSchedulerImpl()
 
     @Provides
     @Singleton

@@ -1,6 +1,8 @@
 package com.android.movielibrary.genre.ui
 
+import com.android.movielibrary.genre.data.GenresList
 import com.android.movielibrary.genre.domain.GetMovieGenres
+import io.reactivex.observers.DisposableSingleObserver
 import javax.inject.Inject
 
 /*
@@ -16,6 +18,18 @@ class GenrePresenter @Inject constructor(val genreView: GenreContract.View,
 
     override fun getMovieGenre() {
         genreView.showProgress()
-        getMovieGenres.execute()
+        getMovieGenres.execute(GenreSingleDisposableObserver())
+    }
+
+    inner class GenreSingleDisposableObserver : DisposableSingleObserver<GenresList>() {
+
+        override fun onSuccess(value: GenresList?) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
+        override fun onError(e: Throwable?) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+
     }
 }
