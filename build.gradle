@@ -41,4 +41,7 @@ ext {
     retroGsonLibVersion = '2.3.0'
     rxJava2LibVersion = '2.0.2'
     retroFitRxjavaAdapterLibVersion = '1.0.0'
+    mockitoLibVersion = '1.5.0'
+    mockitoInlineLibVersion = '2.8.47'
+    junitLibVersion = '4.12'
 }
