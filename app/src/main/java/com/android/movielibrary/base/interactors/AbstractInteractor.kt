@@ -5,6 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.annotations.TestOnly
 import java.util.concurrent.Executor
 
 /**
@@ -34,6 +35,7 @@ abstract class AbstractInteractor<T>(private val executor: Executor,
         getSingleObservable().subscribeOn(Schedulers.from(executor))
                 .observeOn(mainThreadScheduler.scheduler)
                 .subscribeWith(disposableSingleObserver)
+        addDisposable(disposableSingleObserver)
     }
 
     fun dispose() {
@@ -43,4 +45,7 @@ abstract class AbstractInteractor<T>(private val executor: Executor,
     private fun addDisposable(disposable: Disposable) {
         disposables.add(disposable)
     }
+
+    @TestOnly
+    fun compositeDisposableSize(): Int = disposables.size()
 }

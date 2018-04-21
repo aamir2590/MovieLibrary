@@ -5,16 +5,14 @@ import com.android.movielibrary.genre.data.Genre
 import com.android.movielibrary.genre.data.GenresList
 import com.android.movielibrary.genre.domain.GenreRepository
 import com.android.movielibrary.genre.domain.GetMovieGenres
-import com.nhaarman.mockito_kotlin.*
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
-import org.junit.Assert.assertThat
+import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import java.util.concurrent.Executor
 
@@ -35,6 +33,8 @@ class GetMovieGenreUnitTest {
 
     private lateinit var getMovieGenres: GetMovieGenres
 
+    private lateinit var disposableSingleObserver: DisposableSingleObserver<GenresList>
+
     @Before
     fun setUpGetMovieGenreUnitTest() {
 
@@ -46,21 +46,36 @@ class GetMovieGenreUnitTest {
 
         executor = mock()
 
+        disposableSingleObserver = mock()
+
         getMovieGenres = GetMovieGenres(executor, mainThreadScheduler, repository)
 
     }
 
     @Test
-    fun singleObservableFromRepositoryCompletes() {
+    fun `is genreList's observer completes successfully`() {
         whenever(repository.getGenres()).thenReturn(Single.just(genresList))
         val testObserver = getMovieGenres.getSingleObservable().test()
         testObserver.assertComplete()
     }
 
     @Test
-    fun getSingleObservableFromRepositoryReturnsValues() {
+    fun `is genreList's observer receives same list what genre repository observable is emitting`() {
         whenever(repository.getGenres()).thenReturn(Single.just(genresList))
         val testObserver = getMovieGenres.getSingleObservable().test()
         testObserver.assertValue(genresList)
+    }
+
+    @Test
+    fun `is disposableObserver gets added in the disposable list`() {
+
+        whenever(getMovieGenres.getSingleObservable()).thenReturn(Single.just(genresList))
+
+        whenever(mainThreadScheduler.scheduler).thenReturn(Schedulers.trampoline())
+
+        getMovieGenres.execute(disposableSingleObserver)
+
+        assertTrue(getMovieGenres.compositeDisposableSize() == 1)
+
     }
 }
