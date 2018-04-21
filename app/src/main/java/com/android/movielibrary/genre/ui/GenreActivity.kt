@@ -34,9 +34,12 @@ class GenreActivity : AppCompatActivity(), GenreContract.View {
     override fun hideProgress() {
     }
 
-    override fun showGenreList(genreList: List<Genre>) {
+    override fun showGenreList(genreList: List<Genre>?) {
     }
 
     override fun showProgress() {
+    }
+
+    override fun showErrorMsgToUser(errorMsg: String?) {
     }
 }

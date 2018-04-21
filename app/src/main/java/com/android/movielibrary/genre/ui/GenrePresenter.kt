@@ -21,14 +21,20 @@ class GenrePresenter @Inject constructor(val genreView: GenreContract.View,
         getMovieGenres.execute(GenreSingleDisposableObserver())
     }
 
+    override fun onPresenterDestroy() {
+        getMovieGenres.dispose()
+    }
+
     inner class GenreSingleDisposableObserver : DisposableSingleObserver<GenresList>() {
 
         override fun onSuccess(value: GenresList?) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            genreView.hideProgress()
+            genreView.showGenreList(value?.genres)
         }
 
         override fun onError(e: Throwable?) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            genreView.hideProgress()
+            genreView.showErrorMsgToUser(e?.message)
         }
 
     }
