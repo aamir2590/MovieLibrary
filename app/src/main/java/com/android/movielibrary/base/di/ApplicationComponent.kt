@@ -1,7 +1,9 @@
 package com.android.movielibrary.base.di
 
+import android.app.Application
 import com.android.movielibrary.MovieLibraryApp
 import com.android.movielibrary.base.interactors.MainThreadScheduler
+import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import java.util.concurrent.Executor
@@ -21,5 +23,13 @@ interface ApplicationComponent {
     fun getMainThreadScheduler(): MainThreadScheduler
 
     fun getThreadPoolExecutor(): Executor
+
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): Builder
+
+        fun build(): ApplicationComponent
+    }
 
 }

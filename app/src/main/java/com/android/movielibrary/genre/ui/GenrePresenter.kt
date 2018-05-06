@@ -29,7 +29,7 @@ class GenrePresenter @Inject constructor(val genreView: GenreContract.View,
 
         override fun onSuccess(value: GenresList?) {
             genreView.hideProgress()
-            genreView.showGenreList(value?.genres)
+            value?.genres?.run { genreView.showGenreList(this) }
         }
 
         override fun onError(e: Throwable?) {

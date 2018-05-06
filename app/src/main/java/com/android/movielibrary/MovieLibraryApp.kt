@@ -21,6 +21,7 @@ class MovieLibraryApp : Application(), HasActivityInjector {
         super.onCreate()
         DaggerApplicationComponent
                 .builder()
+                .application(this)
                 .build()
                 .inject(this)
     }

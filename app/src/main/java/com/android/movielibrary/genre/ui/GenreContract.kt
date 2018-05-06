@@ -15,7 +15,7 @@ class GenreContract {
     interface View : BaseView<Presenter> {
         fun showProgress()
         fun hideProgress()
-        fun showGenreList(genreList: List<Genre>?)
+        fun showGenreList(genreList: List<Genre>)
         fun showErrorMsgToUser(errorMsg: String?)
     }
 }

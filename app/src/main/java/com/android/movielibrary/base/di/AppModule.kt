@@ -1,5 +1,7 @@
 package com.android.movielibrary.base.di
 
+import android.app.Application
+import android.content.Context
 import com.android.movielibrary.base.interactors.MainThreadScheduler
 import com.android.movielibrary.base.interactors.MainThreadSchedulerImpl
 import com.android.movielibrary.base.interactors.ThreadExecutor
@@ -21,5 +23,9 @@ class AppModule {
     @Provides
     @Singleton
     fun provideThreadPoolExecutor(): Executor = ThreadExecutor()
+
+    @Provides
+    @Singleton
+    fun provideApplicationContext(applicationContext: Application): Context = applicationContext
 
 }

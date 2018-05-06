@@ -14,11 +14,27 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layouts/genre',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
+        }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 
@@ -33,9 +49,9 @@ dependencies {
 
 
 
-    testCompile "junit:junit:$rootProject.junitLibVersion"
-    testCompile "com.nhaarman:mockito-kotlin:$rootProject.mockitoLibVersion"
-    testCompile "org.mockito:mockito-inline:$rootProject.mockitoInlineLibVersion"
+    testImplementation "junit:junit:$rootProject.junitLibVersion"
+    testImplementation "com.nhaarman:mockito-kotlin:$rootProject.mockitoLibVersion"
+    testImplementation "org.mockito:mockito-inline:$rootProject.mockitoInlineLibVersion"
     androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -50,6 +66,8 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidLibVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJava2LibVersion"
+
+    implementation 'com.android.support:recyclerview-v7:25.4.0'
 
     kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerLibVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerLibVersion"
