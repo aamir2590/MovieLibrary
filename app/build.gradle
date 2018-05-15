@@ -4,12 +4,12 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.android.movielibrary"
         minSdkVersion 18
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -36,6 +36,12 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    configurations.all {
+        resolutionStrategy {
+            force 'org.jetbrains.kotlin:kotlin-stdlib:1.2.21'
+        }
+    }
 }
 
 dependencies {
@@ -49,6 +55,7 @@ dependencies {
 
 
 
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation "junit:junit:$rootProject.junitLibVersion"
     testImplementation "com.nhaarman:mockito-kotlin:$rootProject.mockitoLibVersion"
     testImplementation "org.mockito:mockito-inline:$rootProject.mockitoInlineLibVersion"
@@ -63,14 +70,20 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitLibVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retroGsonLibVersion"
     implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rootProject.retroFitRxjavaAdapterLibVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonLibVersion"
+
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    androidTestImplementation "android.arch.persistence.room:testing:$rootProject.roomVersion"
 
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidLibVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJava2LibVersion"
 
-    implementation 'com.android.support:recyclerview-v7:25.4.0'
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
 
     kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerLibVersion"
     kapt "com.google.dagger:dagger-compiler:$rootProject.daggerLibVersion"
+
 }
 repositories {
     mavenCentral()

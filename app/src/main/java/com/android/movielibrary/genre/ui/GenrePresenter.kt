@@ -27,12 +27,12 @@ class GenrePresenter @Inject constructor(val genreView: GenreContract.View,
 
     inner class GenreSingleDisposableObserver : DisposableSingleObserver<GenresList>() {
 
-        override fun onSuccess(value: GenresList?) {
+        override fun onSuccess(value: GenresList) {
             genreView.hideProgress()
             value?.genres?.run { genreView.showGenreList(this) }
         }
 
-        override fun onError(e: Throwable?) {
+        override fun onError(e: Throwable) {
             genreView.hideProgress()
             genreView.showErrorMsgToUser(e?.message)
         }
